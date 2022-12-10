@@ -20,4 +20,9 @@ class NotesController < ApplicationController
       render :new, status: unprocessable_entity
     end
   end
+
+  private
+    def note_params
+      params.require(:note).permit(:title, :body)
+    end
 end
