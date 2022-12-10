@@ -1,1 +1,11 @@
 <h1>Note Menu</h1>
+
+<ul>
+  <% @notes.each do |note| %>
+    <li>
+        <a href="/notes/<%= note.id %>">
+            <%= note.title %>
+        </a>
+    </li>
+  <% end %>
+</ul>
