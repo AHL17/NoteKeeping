@@ -12,12 +12,12 @@ class NotesController < ApplicationController
   end
 
   def create
-    @note = Note.new(title:"...", body:"...")
+    @note = Note.new(note_params)
 
     if @note.save
       redirect_to @note
     else
-      render :new, status: unprocessable_entity
+      render :new, status: :unprocessable_entity
     end
   end
 
@@ -33,6 +33,13 @@ class NotesController < ApplicationController
     else
       render :edit, status: :unprocessable_entity
     end
+  end
+
+  def destroy
+    @note = Note.find(params[:id])
+    @note.destroy
+    
+    redirect_to root_path, status: :see_other
   end
 
   private
