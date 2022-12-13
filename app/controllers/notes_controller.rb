@@ -1,5 +1,5 @@
 class NotesController < ApplicationController
-  http_basic_authenticate_with name: "admin", password: "note", except: [:index, :show]
+  #before_filter :authorize, only: [:edit, :update]
 
   def index
     @notes = Note.all
